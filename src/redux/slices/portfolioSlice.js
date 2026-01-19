@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const COUNT_OF_PERCENT = 100;
+
 const initialState = {
   coinList: [],
   total: 0,
@@ -42,7 +44,10 @@ const portfolioSlice = createSlice({
         (a, b) => a + b.buyPrice * b.count,
         0,
       );
-      state.pnl = (100 - (state.buyTotal * 100) / state.total || 0).toFixed(2);
+      state.pnl = (
+        COUNT_OF_PERCENT - (state.buyTotal * COUNT_OF_PERCENT) / state.total ||
+        0
+      ).toFixed(2);
       state.dif = (state.total - state.buyTotal).toFixed(2);
     },
   },

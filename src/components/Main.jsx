@@ -1,12 +1,14 @@
-import Header from './ui/Header';
+import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Spin } from 'antd';
+
+import Header from './ui/Header';
 import AddModal from './ui/AddModal';
 import PortfolioModal from './ui/PortfolioModal';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectLoading, selectError } from '../redux/slices/cryptosSlice';
-import { Spin } from 'antd';
+
 import { getCryptos } from '../redux/api/cryptosApi';
+import { selectLoading, selectError } from '../redux/slices/cryptosSlice';
 
 const Main = () => {
   const error = useSelector(selectError);
